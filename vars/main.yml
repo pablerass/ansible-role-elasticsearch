@@ -1,0 +1,11 @@
+---
+# vars file for elasticsearch
+elasticsearch_user: "elasticsearch"
+elasticsearch_group: "elasticsearch"
+elasticsearch_service: "elasticsearch"
+
+elasticsearch_network_host: "0.0.0.0"
+elasticsearch_transport_host: "0.0.0.0"
+elasticsearch_port: 9200
+
+elasticsearch_node_name: "{{ elasticsearch_hostname }}"

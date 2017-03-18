@@ -1,0 +1,15 @@
+---
+# defaults file for elasticsearch
+elasticsearch_hostname: "{{ inventory_hostname }}"
+
+elasticsearch_master: true
+elasticsearch_data: true
+elasticsearch_ingest: "{{ elasticsearch_data }}"
+
+elasticsearch_cluster: "elk"
+elasticsearch_cluster_hosts: []
+
+elasticsearch_jvm_heap: "3g"
+
+elasticsearch_apt_key_url: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+elasticsearch_apt_repo: "deb https://artifacts.elastic.co/packages/5.x/apt stable main"

@@ -1,0 +1,6 @@
+---
+# handlers file for elasticsearch
+- name: "Restart ElasticSearch"
+  service:
+    name: "{{ elasticsearch_service }}"
+    state: "restarted"

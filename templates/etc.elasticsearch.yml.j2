@@ -1,0 +1,32 @@
+# ======================== Elasticsearch Configuration =========================
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+cluster.name: {{ elasticsearch_cluster }}
+# ------------------------------------ Node ------------------------------------
+node.master: {{ elasticsearch_master|to_json }}
+node.data: {{ elasticsearch_data|to_json }}
+node.ingest: {{ elasticsearch_ingest|to_json }}
+node.name: {{ elasticsearch_node_name }}
+# ----------------------------------- Paths ------------------------------------
+#path.data: /path/to/data
+#path.logs: /path/to/logs
+# ----------------------------------- Memory -----------------------------------
+#bootstrap.memory_lock: true
+# ---------------------------------- Network -----------------------------------
+network.host: {{ elasticsearch_network_host }}
+http.port: {{ elasticsearch_port }}
+# --------------------------------- Transport ----------------------------------
+transport.host: {{ elasticsearch_transport_host }}
+transport.tcp.port: 9300-9400
+# --------------------------------- Discovery ----------------------------------
+discovery.zen.ping.unicast.hosts: {{ elasticsearch_cluster_hosts|to_json }}
+discovery.zen.minimum_master_nodes: {{ [(elasticsearch_cluster_hosts|length // 2) + 1, 1]|max }}
+# ---------------------------------- Gateway -----------------------------------
+gateway.recover_after_nodes: {{ [(elasticsearch_cluster_hosts|length // 2) + 1, 1]|max }}
+# ---------------------------------- Various -----------------------------------
+#action.destructive_requires_name: true
